@@ -13,10 +13,11 @@ export class TodosScannerComponent {
   constructor(private apiService: ApiService) { }
 
   saveTodos() {
-    console.log('saveTodos')
     this.apiService.addTodos({
       name: this.todoName,
       id: v4()
-    }).subscribe()
+    }).subscribe(() => {
+      this.todoName = '';
+    })
   }
 }

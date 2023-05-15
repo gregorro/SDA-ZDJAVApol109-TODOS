@@ -5,5 +5,5 @@
     <label for="todosNameInput">Todos name:</label>
     <input type="text" id="todosNameInput" [(ngModel)]="todoName">
   </div>
-  <button (click)="saveTodos()">Save</button>
+  <button [disabled]="todoName.length == 0" (click)="saveTodos()">Save</button>
 </div>

@@ -1,20 +1,9 @@
 {
   "todos": [
     {
-      "id": "1",
-      "name": "Do shopping"
-    },
-    {
-      "id": "2",
-      "name": "Sample"
-    },
-    {
-      "id": "3",
-      "name": "Sample 23"
-    },
-    {
-      "name": "sdsdsd",
-      "id": "e54ac4d3-aaa3-41da-8283-d751459fcc42"
+      "name": "Przykład :D",
+      "description": "Przykład :D",
+      "id": "b4960555-e216-4685-ad62-35deeee739a4"
     }
   ]
 }
