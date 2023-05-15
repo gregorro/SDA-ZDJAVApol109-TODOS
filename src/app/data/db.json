@@ -4,6 +4,11 @@
       "name": "Przykład :D",
       "description": "Przykład :D",
       "id": "b4960555-e216-4685-ad62-35deeee739a4"
+    },
+    {
+      "id": "de7ff18e-a4fb-4141-a433-215cb9727068",
+      "name": "Test",
+      "description": "Testowy"
     }
   ]
 }

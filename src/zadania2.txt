@@ -1,0 +1,9 @@
+1) Odświeżanie listy todos'ow po dodaniu nowego
+2) Edycja
+3) Usuniecie
+4) Dodanie do todos'a:
+  - data dodania
+  - data wykonania
+  - deadline - termin na zrealizowanie
+  - czy zrealizowanie
+  - * priorytet

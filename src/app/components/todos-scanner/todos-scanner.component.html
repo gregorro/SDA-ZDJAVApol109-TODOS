@@ -5,5 +5,9 @@
     <label for="todosNameInput">Todos name:</label>
     <input type="text" id="todosNameInput" [(ngModel)]="todoName">
   </div>
-  <button [disabled]="todoName.length == 0" (click)="saveTodos()">Save</button>
+  <div>
+    <label for="todosDescriptionTextarea">Todos description:</label>
+    <textarea  id="todosDescriptionTextarea" [(ngModel)]="todoDescription"></textarea>
+  </div>
+  <button [disabled]="todoName.length == 0 || todoDescription.length == 0 " (click)="saveTodos()">Save</button>
 </div>

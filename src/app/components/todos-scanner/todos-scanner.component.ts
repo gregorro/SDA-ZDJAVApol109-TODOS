@@ -9,13 +9,15 @@ import { v4 } from 'uuid'
 })
 export class TodosScannerComponent {
   todoName: string = ''
+  todoDescription: string = ''
 
   constructor(private apiService: ApiService) { }
 
   saveTodos() {
     this.apiService.addTodos({
+      id: v4(),
       name: this.todoName,
-      id: v4()
+      description: this.todoDescription,
     }).subscribe(() => {
       this.todoName = '';
     })
