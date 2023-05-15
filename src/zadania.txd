@@ -1,0 +1,2 @@
+1) Wyczyścić zartość todoName w komponencie TodosScannerComponent po zapisie danych
+2) zablokowa atrybut disabled guzik zapisu jesli wartość todoName jest pusta
