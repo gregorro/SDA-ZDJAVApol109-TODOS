@@ -1,0 +1,87 @@
+// Część pierwsza - instalacja i uruchomienie
+- instalacja/sprawdzenie posiadania Node.js i npm
+- posiadanie Angular Cli - polecenie -> npm install -g @angular/cli
+- stworzenie projektu za pomocą komendy -> ng new [nazwa projektu]
+- wejście do folderu projektu za pomocą vsc lub konsoli -> cd ./[nazwa projektu]
+- odpalenie projektu za pomocą polecenia -> ng serve
+
+// Cześć druga - deweloperka
+A) Dodawanie paczki do projektu
+- sprawdzenie paczek obecnie znajdujących się w projekcie -> plik package.json sekcja "dependencies"
+- znalezienie odpowiedniej paczki w internecie / repozytorium npm (odpowiedniej dla Angulara)
+- instalacja za pomoca polecenia -> npm i [nazwa paczki]
+
+B) Najważniejsze pliki w projekcie
+- package.json - informacje o projekcie i użytych paczkach / skryptach
+- package-lock.json - drzewko paczek głownych i pobocznych (wymaganych przez paczki główne)
+- README.md - dokumentacja projektu
+- angular.json - najwazniejsza konfiguracja Angular'a
+- styles.css - globalny css - działający na wszystkie komponenty
+- main.ts - plik uruchamiający Angulara
+- index.html - templatka początkowa w której buduje się cały Angular (dynamiczne wstawianie treści przez JS'a)
+
+C) Informacje o module
+  - [nazwa].module.ts - nazwa modułu
+  - element zbiorczy, łączący w swoim zakresie mechaniki i komponenty / grupuje je
+  - posiada definicje elementów wchodzących w jego skład:
+    a) komponentow -> tablica declarations
+    b) importów (modułów) -> tablica imports
+    c) serwisów - tablica providers
+    d) definiuje punkt wejścia -> tablica bootstrap
+    f) definiuje eksporty zewnętrzne (udostępnione innym modułom) -> tablica exports
+  - [nazwa]-routing.module.ts - moduł do definiowanie routingu na stronie
+    a) Definiowanie pojedynczej ścieżki - element w tablicy "routes"
+      a1) - path -> ścieżka/link w przeglądarce
+        a1a) - parametr "**" -> dopasowanie do dowolnej ścieżki
+        a1b) - parametr :[nazwa parametru] -> parametr ścieżkowy (np id elementu)
+      a2) - component -> komponent do wyrenderowania na danej ścieżce
+      a3) - redirectTo -> przeniesienie do innej ścieżki
+      a4) - canActivate/canDeactivate.... -> guardy broniące dostepu do danej ścieżki
+
+D) Informacje o komponencie
+  *) ng generate component [sciezka] - polecenie genetujace komponent
+  *) [nazwa].component.ts - plik z mechaniką elementu
+    - @Component - dekorator który definiuje parametry komponentu
+      a) selector - nazwa komponentu (wywołujemy komponent za pomoca zapisu <[nazwa komponetu]></[nazwa komponentu]>)
+      b) template - templatka html podana jako string bezpośrednio w kluczu lub jako zmienna
+      c) templateUrl - url do templatki komponentu
+      d) styles - css komponentu - podana jako string bezpośrednio w kluczu lub jako zmienna
+      e) styleUrls - tablice linków do cssów komponentu
+    - najwazniejsze interfejsy rozszerzające klase komponentu (interfejsy cyklu życia)
+      a) interfejs OnInit - metoda ngOnInit - metoda uruchamiana automatycznie podczas uruchomienia komponentu
+      b) interfejs OnDestroy - metoda ngOnDestroy - metoda uruchamiana automatycznie podczas kasowania komponentu
+    - konstruktor (constructor(){})  - metoda tworząca instancje klasy
+      a) Dependency Injection - metoda wstrzykiwania serwisów do konstruktora - rozszerza mechanizmy w klasie poprzez dostarczenie metod serwisów
+        a1) przykład dla apiService'u - constructor(private apiService: ApiService){}
+  *) - [nazwa].component.css - plik z css'em dla komponentu
+  *) - [nazwa].component.spec.ts - plik z testami dla komponentu
+  *) - [nazwa].component.html - plik z html'em komponentu
+
+E) Informacje o serwisie
+  - ng generate service [sciezka] - polecenie genetujace serwis
+  - [nazwa].service.ts - plik z mechaniką servicu
+      a) - @Injectable - dekorator który definiuje parametry serwisu
+        1) providedIn - zakres użyteczności serwisu
+          1a) parametr - 'root' -> globalny zakres
+      b) - konstruktor (constructor(){})  - metoda tworząca instancje klasy
+          1) Dependency Injection - metoda wstrzykiwania serwisów do konstruktora - rozszerza mechanizmy w klasie poprzez dostarczenie metod serwisów
+            1a) HttpClient - serwis wstrzykiwany za pomocą DI, dostarcza mechanizmy połączeń HTTP
+
+F) Informacje o dyrektywie
+  - *ngIf - renederuje element na podstawie spełnienia warunku ->  <button *ngIf="todosToEditId" (click)="backToAddMode()">Cancel</button>
+  - *ngFor - renederuje liste elementów na podstawie tablicy
+      <ng-container *ngFor="let todo of todos">
+        <app-todos [todo]="todo"></app-todos>
+      </ng-container>
+  - {{ [nazwa zmiennej] }} - mechanizm wstrzykiwania wartości do templatki z komponentu
+  - ( [nazwa eventu] )="[nazwa metody]()" - mechanizm przechwytywania eventów i odpalania metody
+  - ([ngModel])="[nazwa zmiennej]" - pełna synchronizacja wartości w zmiennej (dwustronna)
+
+G) Informacje o pipe'ie
+  - ng generate pipe [sciezka] - polecenie genetujace pipe
+  - [nazwa].pipe.ts - plik z mechaniką pipe
+      a) @Pipe - dekorator który definiuje parametry serwisu
+        1) name - id/nazwa pipe'a
+      b) PipeTransform - interfejs rozszerzający klase do pipe'a
+        1) metoda transform - metoda transformująca dane wejsciowe na wartośc wyjsciowa/ prostą
+      c) {{ [warość do trnasformacji] | [nazwa pipe'a] }} - transformowanie wartości - {{character.status | uppercase}}

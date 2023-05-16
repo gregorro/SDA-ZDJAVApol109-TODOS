@@ -49,6 +49,9 @@ export class TodosScannerComponent implements OnInit {
   }
 
   backToAddMode(){
+    this.todoName = '';
+    this.todoDescription = '';
+
     this.currentScannerViewType = TodosScannerViewEnum.AddView;
     this.todosToEditId = null;
   }
