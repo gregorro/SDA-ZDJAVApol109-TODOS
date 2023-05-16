@@ -20,7 +20,17 @@ export class ApiService {
   }
 
   // Metoda wstawiająca dane
-  addTodos(todos: Todos){
+  addTodos(todos: Todos): Observable<any>{
     return this.http.post(`${this.baseUrl}/todos`, todos)
+  }
+
+  // Metoda usuwająca dane
+  deleteTodos(id: string): Observable<any>{
+    return this.http.delete(`${this.baseUrl}/todos/${id}`)
+  }
+
+  // Metoda do edycji todos'a
+  editTodos(id: string, todos: Todos): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/todos/${id}`, todos)
   }
 }

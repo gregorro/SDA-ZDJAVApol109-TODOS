@@ -1,6 +1,6 @@
-1) Odświeżanie listy todos'ow po dodaniu nowego
-2) Edycja
-3) Usuniecie
+1) Odświeżanie listy todos'ow po dodaniu nowego - done
+2) Usuniecie
+3) Edycja
 4) Dodanie do todos'a:
   - data dodania
   - data wykonania
